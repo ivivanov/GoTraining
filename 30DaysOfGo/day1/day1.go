@@ -10,34 +10,23 @@ import (
 func main() {
 	var _ = strconv.Itoa // Ignore this comment. You can still use the package "strconv".
 
-	// var i uint64 = 4
-	// var d float64 = 4.0
-	// var s string = "HackerRank"
+	var i uint64 = 4
+	var d float64 = 4.0
+	var s string = "HackerRank "
 
-	var (
-		num int64
-		dub float64
-		str string
-	)
+	scanner := bufio.NewScanner(os.Stdin)
 
-	r := bufio.NewReader(os.Stdin)
-	for i := 0; i < 3; i++ {
-		fmt.Fscanln(r, "%d %b %s", &num, &dub, &str)
-	}
+	scanner.Scan()
+	num, _ := strconv.ParseUint(scanner.Text(), 10, 64)
 
-	fmt.Println(num)
-	fmt.Println(dub)
-	fmt.Println(str)
-	// scanner := bufio.NewScanner(os.Stdin)
-	// Declare second integer, double, and String variables.
+	scanner.Scan()
+	dub, _ := strconv.ParseFloat(scanner.Text(), 64)
 
-	// Read and save an integer, double, and String to your variables.
+	scanner.Scan()
+	str := scanner.Text()
 
-	// Print the sum of both integer variables on a new line.
-
-	// Print the sum of the double variables on a new line.
-
-	// Concatenate and print the String variables on a new line
-	// The 's' variable above should be printed first.
-
+	fmt.Println(i + num)
+	fmt.Printf("%.1f", d+dub)
+	fmt.Println()
+	fmt.Println(s + str)
 }
