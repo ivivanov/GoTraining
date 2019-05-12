@@ -34,7 +34,8 @@ func (p *person) copy() person {
 }
 
 func (p *person) copy2() person {
-	clone := person{first: p.first, last: p.last, age: p.age, icecreams: p.icecreams}
+	clone := person{first: p.first, last: p.last, age: p.age}
+	copy(clone.icecreams, p.icecreams)
 	return clone
 }
 
@@ -51,17 +52,15 @@ func main() {
 	ivan.speak()
 	cloned.speak() */
 
-	/* 	cloned := ivan.copy2()
+	/* 	Test 2
+		cloned := ivan.copy2()
 	   	ivan.speak()
 	   	ivan.AddIcecream("Fresh")
 	   	ivan.speak()
 	   	cloned.speak() */
 
-	/* Compare by ref */
 	t1 := ivan.copy()
-	// t2 := ivan.copy2()
-	// t3 := ivan
-	fmt.Printf("t1 compared to ivan: %v, types - %T, %T\n", &t1 == &ivan, &t1, &ivan, t1, ivan)
-	fmt.Printf("values - &t1=%v, &ivan=%v\n", &t1, &ivan)
-	fmt.Printf("poiters - *t1=%v, *ivan=%v", *t1, *ivan)
+
+	fmt.Printf("t1 compared to ivan: %v, types - %T, %T\n", &t1 == &ivan, t1, ivan)
+	fmt.Printf("icecreams compare - %v\n", &t1.icecreams == &ivan.icecreams)
 }
