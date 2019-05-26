@@ -12,6 +12,7 @@ type person struct {
 	icecreams []string
 }
 
+// uses string builder
 func (p *person) speak() {
 	var str strings.Builder
 	str.WriteString(fmt.Sprint(p.first, " ", p.last, " ", "age:", p.age, " "))
